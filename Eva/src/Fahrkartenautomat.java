@@ -3,8 +3,6 @@ import java.util.Scanner;
 class Fahrkartenautomat {
 	static int gesamtzahlTickets = 0;
 	
-	// Unnötiger Kommentar
-	
 	public static void main(String[] args) {
 
 		Scanner tastatur = new Scanner(System.in);
