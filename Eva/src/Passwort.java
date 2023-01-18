@@ -3,8 +3,7 @@ public class Passwort {
 
 	public static void main(String[] args) {
 		for (int i = 1; i <= 1000; i++) {
-			boolean valid = checkPasscode(i);
-			if (valid) System.out.println(i);
+			if (checkPasscode(i)) System.out.println(i);
 		}
 	}
 
