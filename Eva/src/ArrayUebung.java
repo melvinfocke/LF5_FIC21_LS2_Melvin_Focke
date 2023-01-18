@@ -14,7 +14,7 @@ public class ArrayUebung {
 
 		// 4. Das Array mit allen ganzen Zahlen von 1 bis 100 befüllen.
 		for (int i = 0; i < zahlen.length; i++) {
-			zahlen[i] = i+1;
+			zahlen[i] = i + 1;
 		}
 
 		// 5. Geben Sie den Wert an der Stelle 89 des Arrays aus.
@@ -38,13 +38,18 @@ public class ArrayUebung {
 			System.out.println("Index " + i + " - Inhalt: " + zahlen[i]);
 		}
 
-		int summe = 0;
+		double summe = 0;
 		// 8. Berechnung des Durchschnitts aller Arrayelemente
 		for (int i = 0; i < zahlen.length; i++) {
 			summe += zahlen[i];
 		}
-		double avg = (double) summe / zahlen.length;
+		double avg = summe / zahlen.length;
 		System.out.println("Durchschnitt: " + avg);
-
+		
+		
+		int a = 5;
+		if (++a > 5) {
+			System.out.println("Bla"); // Post-Increment a++ und preincrement ++a
+		}
 	}
 }
