@@ -24,45 +24,43 @@ class Fahrkartenautomat {
 	}
 	
 	public static double fahrkartenbestellungErfassen(Scanner tastatur) {
-		double ticketpreis;
+		String[] fahrkartenBezeichnungen = {"Einzelfahrschein AB", "Einzelfahrschein BC", "Einzelfahrschein ABC", "Kurzstrecke AB", "Tageskarte AB", "Tageskarte BC", "Tageskarte ABC", "4-Fahrten-Karte AB", "4-Fahrten-Karte BC", "4-Fahrten-Karte ABC", "Kleingruppen-Tageskarte AB", "Kleingruppen-Tageskarte BC", "Kleingruppen-Tageskarte ABC"};
+		double[] fahrkartenPreise = {3.00, 3.50, 3.80, 2.00, 8.60, 9.20, 10.00, 9.40, 12.60, 13.80, 25.50, 26.00, 26.50};
+		
+		double ticketpreis = 0.00;
 		int tickettyp;
 		int anzahlTickets = 0;
 		double zuZahlenderBetrag = 0;
 		boolean bezahlen = false;
 		while (true) {
 			
-			// Ticket auswählen
-			System.out.println("Kurzstrecke AB [2,00 EUR] (1)\n" + 
-					"Einzelfahrschein AB [3,00 EUR] (2)\n" + 
-					"Tageskarte AB [8,80 EUR] (3)\n" + 
-					"4-Fahrten-Karte AB [9,40 EUR] (4)\n" + 
-					"Bezahlen (9)\n");
+			for (int i = 0; i < fahrkartenBezeichnungen.length; i++) {
+				System.out.printf("%s [%.2f] (%d)\n", fahrkartenBezeichnungen[i], fahrkartenPreise[i], i + 1);
+			}
+			System.out.println("Bezahlen (0)\n");
 			
-			while (true) {
+//			// Ticket auswählen
+//			System.out.println("Kurzstrecke AB [2,00 EUR] (1)\n" + 
+//					"Einzelfahrschein AB [3,00 EUR] (2)\n" + 
+//					"Tageskarte AB [8,80 EUR] (3)\n" + 
+//					"4-Fahrten-Karte AB [9,40 EUR] (4)\n" + 
+//					"Bezahlen (9)\n");
+			
+			while(true) {
 				System.out.print("Ihre Wahl: ");
 				tickettyp = tastatur.nextInt();
 				
-				switch (tickettyp) {
-				case 1:
-					ticketpreis = 2.00;
-					break;
-				case 2:
-					ticketpreis = 3.00;
-					break;
-				case 3:
-					ticketpreis = 8.80;
-					break;
-				case 4:
-					ticketpreis = 9.40;
-					break;
-				case 9:
+				if (tickettyp < 0 || tickettyp > fahrkartenBezeichnungen.length) {
+					System.out.println(" >> Falsche Eingabe <<");
+					continue;
+				}
+				
+				if (tickettyp == 0) {
 					bezahlen = true;
-				default:
-					ticketpreis = 0.00;
 					break;
 				}
-				if (bezahlen || ticketpreis != 0.00) break;
-				System.out.println(" >> Falsche Eingabe <<");
+				ticketpreis = fahrkartenPreise[tickettyp - 1];
+				break;
 			}
 			
 			if (bezahlen) break;
